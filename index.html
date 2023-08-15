@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal</title>
+    <style>
+        body {
+            font-family: monospace;
+            background-color: black;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #terminal {
+            width: 100%;
+            height: 100vh;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        #input-line {
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div>Welcome to My Terminal!</div>
+        <div>-----------------------------</div>
+    </div>
+    <div id="input-line">&gt; <input id="command-input" type="text" autofocus /></div>
+    
+    <script>
+        const terminal = document.getElementById('terminal');
+        const inputLine = document.getElementById('input-line');
+        const commandInput = document.getElementById('command-input');
+        
+        commandInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const command = commandInput.value;
+                const output = document.createElement('div');
+                output.textContent = `> ${command}`;
+                terminal.appendChild(output);
+                executeCommand(command);
+                commandInput.value = '';
+            }
+        });
+        
+        function executeCommand(command) {
+            const output = document.createElement('div');
+            if (command === 'help') {
+                output.textContent = 'Available commands: help, info, clear';
+            } else if (command === 'info') {
+                output.textContent = 'This is a simple terminal simulation.';
+            } else if (command === 'clear') {
+                terminal.innerHTML = '';
+                return;
+            } else if (command === 'ktotoznakzapytania') {
+                output.innerHTML = `
+              ROZDZIAŁ 1 - DZIEŃ DOBRY WANT CITY  
+
+ 
+ 
+ 
+
+Budzisz się w teoretycznie swoim łóżku. Widzisz apartament o podwyższonym standardzie, czerń mebli akcentowana delikatnymi wstawkami złota. Klasyczny wygląd korporacyjnych apartamentów. Pseudo luksus, okupiony twoją duszą. Lecz nigdy to nie będzie twoje, zawsze będzie korporacji. 
+
+ 
+ 
+ 
+
+ NoirX, bo do tej korporacji należy twoje mieszkanie, twoje pieniądze ,twoje biotyki, nawet twoje myśli. Trzyma twoje miasto za jaja od pokoleń, dusząc z ludzi takich jak ty każdy możliwy grosz. Nie masz teraz czasu zawracać sobie głowy systemem w którym żyjesz ,bo spieszysz się do pracy. 
+
+ 
+ 
+ 
+
+Idziesz do łazienki ,rozbierasz się i włączasz wodę, Wchodząc do kabiny na język od razu ciśnie ci się jeden piękny wyraz.  
+
+-Kurwa !  
+
+- Znowu te gnoje z Administracji MegaBloku po ostatnim remoncie nie podłączyli ciepłej wody!   
+
+ 
+ 
+ 
+
+Trzęsąc się z zimna myjesz się w lodowatej wodzie ,myśląc nad kolejnym nudnym dniem w pracy, która wyniszcza cię od środka. Wychodzisz z kabiny prysznicowej i włączasz systemy osuszające twoje ciało. Ogarniasz się szybko i od razu za pomocą Chipu w twojej korze mózgowej podświadomie już włączasz ekspres z syntetyczną lurą dumnie nazwaną ,,Kawa’’.  
+
+W tych czasach nawet niektórych prezesów firm nie stać na taki rarytas a co dopiero marnego Oficera Kontrwywiadu NoirX. Wypijasz szybko kawę i ubierasz garniak oraz kaburę z naładowanym pistoletem. Nagle w pomieszczeniu rozbrzmiewa dźwięk dzwoniącego połączenia. 
+
+ 
+ 
+ 
+
+ William Geyoun dzwoni ~ załamany odbierasz i wiesz że masz przejebane, ponieważ jest to twój główny przełożony. Jak on idzie po korytarzu każdy na jego widok jest tak obsrany ,że nie wiesz czy się popłaczesz czy porzygasz ze stresu. William natomiast był dobrze zbudowanym i przystojne wyglądającym mężczyzną z prostymi ciemnymi włosami oraz dość ciemną karnacją skóry. Na jego szyi można można było zobaczyć złote biotyki idące prawie aż po modnie przystrzyżoną brodę. Brak prawej dłoni zastąpionej ciemną jak smoła protezą dodawała mu jeszcze większego szacunku. Tak poza tym wygląda z twarzy jak dwudziestolatek a w rzeczywistości bliżej mu do pięćdziesiątki. Za to kocham rok 2089. 
+
+Jak masz pieniądze na dobre Biotyki to możesz wyglądać 20 lat młodziej a nikt się nie skapnie.  
+
+ 
+
+                `;
+            } else {
+                output.textContent = `Unknown command: ${command}`;
+            }
+            terminal.appendChild(output);
+        }
+    </script>
+</body>
+</html>
